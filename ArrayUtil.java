@@ -2,6 +2,8 @@ package tools;
 import java.util.Random;
 import java.util.Scanner;
 
+import org.apache.commons.lang3.RandomStringUtils;
+
 /*
  * ソート実験の配列を生成、制御するクラス
  */
@@ -13,7 +15,7 @@ public class ArrayUtil {
 		//System.out.println("Input range of Intenger 0 ~ n: ");
 		//System.out.print("n : ");
 		//int n = sc.nextInt();
-		int n = 10000000;
+		int n = 20;
 		for(int i = 0; i < a.length;i++)
 			a[i] = generator.nextInt(n);
 
@@ -34,9 +36,10 @@ public class ArrayUtil {
 	public static double[] randomDoubleArray(int length){
 		double[] a = new double[length];
 		Scanner sc = new Scanner(System.in);
-		System.out.println("Input range of Intenger 0 ~ n: ");
-		System.out.print("n : ");
-		long n = sc.nextLong();
+//		System.out.println("Input range of Intenger 0 ~ n: ");
+//		System.out.print("n : ");
+//		long n = sc.nextLong();
+		long n = 1000000000;
 		for(int i = 0; i < a.length;i++)
 			a[i] = n * generator.nextDouble();
 
@@ -55,6 +58,16 @@ public class ArrayUtil {
 		return a;
 	}
 
+	public static String[] randomStringArray(int length){
+		String[] a = new String[length];
+		Scanner sc = new Scanner(System.in);
+
+		int n = 1000;
+		for(int i = 0; i < a.length;i++)
+			a[i] = RandomStringUtils.randomAlphabetic(n);
+
+		return a;
+	}
 
 	private static Random generator = new Random();
 }
