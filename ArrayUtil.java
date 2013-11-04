@@ -15,10 +15,36 @@ public class ArrayUtil {
 		//System.out.println("Input range of Intenger 0 ~ n: ");
 		//System.out.print("n : ");
 		//int n = sc.nextInt();
-		int n = 20;
+		int n = 2000000;
 		for(int i = 0; i < a.length;i++)
 			a[i] = generator.nextInt(n);
 
+		return a;
+	}
+
+	public static int[] makeIntArray(int length){
+		int[] a = new int[length];
+		Scanner sc = new Scanner(System.in);
+		//System.out.println("Input range of Intenger 0 ~ n: ");
+		//System.out.print("n : ");
+		//int n = sc.nextInt();
+		for(int i = 0; i < a.length;){
+			for(int j = 0;j < a.length / 8;j++){
+				i++;
+				if(i >= a.length){
+					return a;
+				}
+				a[i] = j;
+			}
+
+			for(int k = a.length / 4;k > 0;k--){
+				i++;
+				if(i >= a.length){
+					return a;
+				}
+				a[i] = k;
+			}
+		}
 		return a;
 	}
 
