@@ -1,20 +1,39 @@
 package tools;
+
+import java.io.PrintWriter;
 /*
  * ソート実験のに配列の操作のために使う道具
  */
 
 public class MyArrayUtil extends ArrayUtil{
 
-	public static <E extends Comparable> void print(E[] a){
+	public static synchronized <E extends Comparable> void print(Object[] a,int num){
+			System.out.print("array["+num+"] : "); ((MyData)a[num]).print();
+		System.out.println();
+	}
+
+	public static synchronized <E extends Comparable> void print(E[] a){
 		for(E e : a)
 			((MyData)e).print();
 		System.out.println();
 	}
 
-	public static <E extends Comparable> void print(E[] a,int num){
-		System.out.print("array["+ num +"] : ");
-		((MyData)a[num]).print();
+	public static synchronized <E extends Comparable> void print(Object[] a){
+		for(Object e : a)
+			((MyData)e).print();
 		System.out.println();
+	}
+
+	public static synchronized <E extends Comparable> void print(E[] array,PrintWriter pw){
+		for(E e : array)
+			pw.print(" "+((MyData)e).getData());
+		pw.println();
+	}
+
+	public static synchronized <E extends Comparable> void print(E[] array,PrintWriter pw,int num){
+
+		pw.print("array["+num+ "] : "+((MyData)array[num]).getData());
+		pw.println();
 	}
 
 	public static <E extends Comparable> void print(E[] a,int left,int right){
@@ -34,9 +53,9 @@ public class MyArrayUtil extends ArrayUtil{
 		}
 		if(i == a.length-1){
 			return true;
-			
+
 		}
-		
+
 		return false;
 	}
 }
